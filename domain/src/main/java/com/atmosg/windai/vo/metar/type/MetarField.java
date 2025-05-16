@@ -1,6 +1,6 @@
 package com.atmosg.windai.vo.metar.type;
 
-public enum ReportFieldType {
+public enum MetarField {
   STATION_ICAO,
   REPORT_TYPE,
   OBSERVATION_TIME,
