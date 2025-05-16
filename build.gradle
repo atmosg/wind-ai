@@ -8,7 +8,7 @@ plugins {
   id 'java'
 }
 
-group = 'com.wind-ai'
+group = 'com.atmosg.wind-ai'
 version = '1.0-SNAPSHOT'
 
 java {
