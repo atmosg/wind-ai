@@ -40,10 +40,10 @@ public class Cloud {
 
   public static Cloud of(CloudCoverage coverage, Integer altitude, CloudType type) {
     return Cloud.builder()
-      .coverage(coverage)
-      .altitude(altitude)
-      .type(type)
-      .build();
+        .coverage(coverage)
+        .altitude(altitude)
+        .type(type)
+        .build();
   }
 
   public boolean isAltitudeAtMost(int threshold, List<CloudCoverage> targetCoverages) {
