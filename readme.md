@@ -1,0 +1,1 @@
+METAR/TAF 분석을 위한 자체 WIND-AI 프로젝트
