@@ -29,8 +29,16 @@ public class Runway {
     return this.unit.convertTo(length, targetUnit) <= threshold;
   }
 
+  public boolean isLessThan(double threshold, LengthUnit targetUnit) {
+    return this.unit.convertTo(length, targetUnit) < threshold;
+  }
+
   public boolean isAtLeast(double threshold, LengthUnit targetUnit) {
     return this.unit.convertTo(length, targetUnit) >= threshold;
+  }
+
+  public boolean isGreaterThan(double threshold, LengthUnit targetUnit) {
+    return this.unit.convertTo(length, targetUnit) > threshold;
   }
 
   public String getName() {

@@ -1,7 +1,6 @@
 package com.atmosg.windai.vo.metar.field;
 
 import com.atmosg.windai.unit.SpeedUnit;
-import com.atmosg.windai.vo.metar.type.WindDirectionType;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -14,18 +13,26 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class Wind {
 
-  private final WindDirectionType direction;
+  private final WindDirection direction;
   private final double speed;
   private final double gusts;
   private final SpeedUnit unit;
 
-  public static Wind of(WindDirectionType direction, double speed, double gusts, SpeedUnit unit) {
+  public static Wind of(WindDirection direction, double speed, double gusts, SpeedUnit unit) {
     return Wind.builder()
         .direction(direction)
         .speed(speed)
         .gusts(gusts)
         .unit(unit)
         .build();
+  }
+
+  public Wind calculateCrosswind(double runwayHeading) {
+    double degree = direction.getDegreeOrThrow();
+
+    double radians = Math.toRadians(degree - 10 * runwayHeading);
+    double factor = Math.abs(Math.sin(radians));
+    return Wind.of(direction, speed * factor, gusts * factor, unit);
   }
 
   public boolean isSpeedAtMost(double threshold, SpeedUnit targetUnit) {
