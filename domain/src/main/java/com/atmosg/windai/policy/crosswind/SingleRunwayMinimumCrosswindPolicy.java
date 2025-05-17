@@ -12,7 +12,7 @@ public class SingleRunwayMinimumCrosswindPolicy implements MinimumCrosswindPolic
 
   @Override
   public double calculate(Wind wind, List<Runway> runways) {
-    if (runways.size() != 2) {
+    if (runways.size() != 1) {
       throw new GenericPolicyException("Only one runway is allowed for this policy.");
     }
 

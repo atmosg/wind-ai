@@ -26,7 +26,7 @@ public class MultiRunwayMinimumCrosswindPolicy implements MinimumCrosswindPolicy
     boolean everyRunwayLessThan = isEveryRunwayLessThan(runways);
 
     return runways.stream()
-      .filter(runway -> everyRunwayLessThan || runway.isGreaterThan(runwayThreshold, unit))
+      .filter(runway -> everyRunwayLessThan || runway.isAtLeast(runwayThreshold, unit))
       .flatMap(runway -> Stream.of(runway.getEndA(), runway.getEndB()))
       .filter(RunwayEnd::isAvailable)
       .map(end -> wind.calculateCrosswind(end.getHeading()))

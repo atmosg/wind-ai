@@ -32,6 +32,8 @@ public class Wind {
 
     double radians = Math.toRadians(degree - 10 * runwayHeading);
     double factor = Math.abs(Math.sin(radians));
+    if (factor < 1e-10) factor = 0;
+
     return Wind.of(direction, speed * factor, gusts * factor, unit);
   }
 
