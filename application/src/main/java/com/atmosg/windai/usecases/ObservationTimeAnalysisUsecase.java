@@ -4,12 +4,22 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import com.atmosg.windai.unit.LengthUnit;
+import com.atmosg.windai.unit.PressureUnit;
 import com.atmosg.windai.unit.SpeedUnit;
+import com.atmosg.windai.unit.TemperatureUnit;
 import com.atmosg.windai.vo.metar.Metar;
 
 public interface ObservationTimeAnalysisUsecase {
   
   List<ZonedDateTime> findTimeWhenVisibilityAtMost(List<Metar> metar, int threshold, LengthUnit unit);
+
+  List<ZonedDateTime> findTimeWhenAltimeteryAtMost(List<Metar> metar, int threshold, PressureUnit unit);
+
+  List<ZonedDateTime> findTimeWhenAltimeteryAtLeast(List<Metar> metar, int threshold, PressureUnit unit);
+
+  List<ZonedDateTime> findTimeWhenTemperatureAtLeast(List<Metar> metar, int threshold, TemperatureUnit unit);
+
+  List<ZonedDateTime> findTimeWhenTemperatureAtMost(List<Metar> metar, int threshold, TemperatureUnit unit);
 
   List<ZonedDateTime> findTimeWhenPeakSpeedAtLeast(List<Metar> metar, int threshold, SpeedUnit unit);
 
