@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import static com.atmosg.windai.policy.crosswind.MinimumCrosswindPolicyType.*;
 import com.atmosg.windai.service.WindOperation;
 import com.atmosg.windai.vo.metar.field.Runway;
 import com.atmosg.windai.vo.metar.field.RunwayEnd;
 import com.atmosg.windai.vo.metar.field.Wind;
 import com.atmosg.windai.vo.metar.field.WindDirection;
 import com.atmosg.windai.vo.metar.type.RunwaySide;
-import com.atmosg.windai.vo.metar.type.RunwayType;
 
 public class MinimumCrosswindPolicy {
 
@@ -50,7 +50,7 @@ public class MinimumCrosswindPolicy {
 
     // when
     double expected = 34.6;
-    double actual = wo.minimumCrosswind(wind, List.of(singleRunway1), RunwayType.SINGLE);
+    double actual = wo.minimumCrosswind(wind, List.of(singleRunway1), SINGLE_RUNWAY);
     
     assertEquals(expected, actual);
   }
@@ -60,7 +60,7 @@ public class MinimumCrosswindPolicy {
     Wind wind = Wind.of(WindDirection.fixed(100), 20, 40, KT);
 
     double expected = 30.6;
-    double actual = wo.minimumCrosswind(wind, List.of(singleRunway1, singleRunway2), RunwayType.MULTI);
+    double actual = wo.minimumCrosswind(wind, List.of(singleRunway1, singleRunway2), MULTI_RUNWAY);
 
     assertEquals(expected, actual);
   }
@@ -70,7 +70,7 @@ public class MinimumCrosswindPolicy {
     Wind wind = Wind.of(WindDirection.fixed(100), 20, 40, KT);
 
     double expected = 34.6;
-    double actual = wo.minimumCrosswind(wind, List.of(shortRunway, longRunway), RunwayType.MULTI);
+    double actual = wo.minimumCrosswind(wind, List.of(shortRunway, longRunway), MULTI_RUNWAY);
 
     assertEquals(expected, actual);
   }
