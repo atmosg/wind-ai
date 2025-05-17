@@ -1,0 +1,12 @@
+dependencies {
+  implementation project(':domain')
+
+   // Cucumber
+  testImplementation 'io.cucumber:cucumber-java:6.10.4'
+  testImplementation 'io.cucumber:cucumber-junit:6.10.4'
+  testImplementation 'io.cucumber:cucumber-picocontainer:6.10.4'
+
+  // TestContainers
+  testImplementation 'org.testcontainers:testcontainers:1.15.3'
+  
+}
