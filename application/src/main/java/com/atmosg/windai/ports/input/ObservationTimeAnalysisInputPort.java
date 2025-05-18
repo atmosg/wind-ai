@@ -19,7 +19,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ObservationTimeAnalysisInputPort implements ObservationTimeAnalysisUsecase {
 
-  private MetarManagementOutputPort metarManagementOutputPort;
+  private MetarManagementOutputPort metarOutputPort;
 
   @Override
   public List<ZonedDateTime> findTimeWhenVisibilityAtMost(MetarRetrievalPeriod period, int threshold, LengthUnit unit) {
@@ -64,7 +64,7 @@ public class ObservationTimeAnalysisInputPort implements ObservationTimeAnalysis
   }
 
   private List<ZonedDateTime> analyze(MetarRetrievalPeriod period, Predicate<Metar> p) {
-    return metarManagementOutputPort.retrieveMetars(period).stream()
+    return metarOutputPort.retrieveMetars(period).stream()
         .filter(p)
         .map(Metar::getObservationTime)
         .collect(Collectors.toList());

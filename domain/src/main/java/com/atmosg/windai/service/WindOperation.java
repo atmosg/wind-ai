@@ -20,13 +20,9 @@ import lombok.AllArgsConstructor;
 public class WindOperation {
 
   private RoundingPolicy roundingPolicy;
-  private double runwayThreshold;
-  private LengthUnit unit;
   private Map<MinimumCrosswindPolicyType, MinimumCrosswindPolicy> policyMap;
 
   public WindOperation(double runwayThreshold, LengthUnit unit) {
-    this.runwayThreshold = runwayThreshold;
-    this.unit = unit;
     this.roundingPolicy = RoundingPolicy.of(1, RoundingMode.HALF_UP);
     this.policyMap = Map.of(
       MinimumCrosswindPolicyType.MULTI_RUNWAY, new MultiRunwayMinimumCrosswindPolicy(runwayThreshold, unit),

@@ -1,0 +1,65 @@
+package com.atmosg.windai.ports.input;
+
+import java.time.Month;
+import java.time.YearMonth;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import com.atmosg.windai.dto.DirectionBin;
+import com.atmosg.windai.dto.MetarRetrievalPeriod;
+import com.atmosg.windai.dto.SpeedBin;
+import com.atmosg.windai.dto.WindRose;
+import com.atmosg.windai.ports.output.MetarManagementOutputPort;
+import com.atmosg.windai.usecases.WindRoseUsecase;
+import com.atmosg.windai.vo.metar.Metar;
+import com.atmosg.windai.vo.metar.field.Wind;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class WindRoseInputPort implements WindRoseUsecase {
+
+  private MetarManagementOutputPort metarOutputPort;
+
+  @Override
+  public Map<Month, WindRose> generateMonthlyWindRose(MetarRetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
+    List<Metar> metarList = metarOutputPort.retrieveMetars(period);
+
+    List<Metar> metarsWithFixedWind = metarList.stream()
+      .filter(m -> !m.getWind().getDirection().isVariable())
+      .collect(Collectors.toList());
+
+    return metarsWithFixedWind.stream().collect(Collectors.groupingBy(m -> 
+      Month.from(m.getObservationTime()),
+      Collectors.collectingAndThen(
+        Collectors.toList(),
+        monthlyMetarList -> buildWindRoseForMonth(monthlyMetarList, speedBins, directionBins)
+      )
+    ));
+  }
+
+  private WindRose buildWindRoseForMonth(List<Metar> metarList, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
+    Map<WindRose.BinPair, Long> freq = WindRose.initFreqencyMap(speedBins, directionBins);
+
+    for (Metar metar : metarList) {
+      Wind w = metar.getWind();
+      double deg = w.getDirection().getDegreeOrThrow();
+
+      speedBins.stream()
+        .filter(sb -> w.isSpeedAtLeastAndLessThan(sb.lowerInclusive(), sb.upperExclusive(), sb.unit()))
+        .findFirst()
+        .flatMap(sb -> directionBins.stream()
+          .filter(db -> db.contains(deg))
+          .findFirst()
+          .map(db -> new WindRose.BinPair(sb, db))
+        )
+        .ifPresent(bin -> freq.put(bin, freq.get(bin)+1));
+    }
+    
+    return new WindRose(speedBins, directionBins, freq);
+  }
+  
+}

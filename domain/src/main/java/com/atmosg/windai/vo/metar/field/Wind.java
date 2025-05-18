@@ -47,7 +47,7 @@ public class Wind {
 
   public boolean isSpeedAtLeastAndLessThan(double lower, double upper, SpeedUnit targetUnit) {
     double convertedSpeed = this.unit.convertTo(speed, targetUnit);
-    return convertedSpeed <= upper && convertedSpeed < upper;
+    return convertedSpeed >= lower && convertedSpeed < upper;
   }
 
   public boolean isPeakSpeedAtMost(double threshold, SpeedUnit targetUnit) {
