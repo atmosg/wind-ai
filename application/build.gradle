@@ -8,5 +8,6 @@ dependencies {
 
   // TestContainers
   testImplementation 'org.testcontainers:testcontainers:1.15.3'
+  testImplementation "org.mockito:mockito-core:5.+"
   
 }

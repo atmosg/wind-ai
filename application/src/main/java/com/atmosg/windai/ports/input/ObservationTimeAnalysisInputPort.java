@@ -15,7 +15,9 @@ import com.atmosg.windai.usecases.ObservationTimeAnalysisUsecase;
 import com.atmosg.windai.vo.metar.Metar;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
 public class ObservationTimeAnalysisInputPort implements ObservationTimeAnalysisUsecase {
 
