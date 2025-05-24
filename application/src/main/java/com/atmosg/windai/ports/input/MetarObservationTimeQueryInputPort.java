@@ -11,7 +11,7 @@ import com.atmosg.windai.unit.LengthUnit;
 import com.atmosg.windai.unit.PressureUnit;
 import com.atmosg.windai.unit.SpeedUnit;
 import com.atmosg.windai.unit.TemperatureUnit;
-import com.atmosg.windai.usecases.ObservationTimeAnalysisUsecase;
+import com.atmosg.windai.usecases.MetarObservationTimeQueryUsecase;
 import com.atmosg.windai.vo.metar.Metar;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class ObservationTimeAnalysisInputPort implements ObservationTimeAnalysisUsecase {
+public class MetarObservationTimeQueryInputPort implements MetarObservationTimeQueryUsecase {
 
   private MetarManagementOutputPort metarOutputPort;
 

@@ -6,16 +6,14 @@ import static org.mockito.Mockito.when;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mockito.MockitoAnnotations;
 
 import com.atmosg.windai.TestData;
-import com.atmosg.windai.ports.input.ObservationTimeAnalysisInputPort;
+import com.atmosg.windai.ports.input.MetarObservationTimeQueryInputPort;
 import com.atmosg.windai.unit.LengthUnit;
 
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -31,7 +29,7 @@ public class VisibilityFind extends TestData {
   void init() {
     MockitoAnnotations.openMocks(this);
     loadData();
-    this.timeUseCase = new ObservationTimeAnalysisInputPort(metarOutputPort);
+    this.timeUseCase = new MetarObservationTimeQueryInputPort(metarOutputPort);
     when(metarOutputPort.retrieveMetars(period))
       .thenReturn(metarList);
   }

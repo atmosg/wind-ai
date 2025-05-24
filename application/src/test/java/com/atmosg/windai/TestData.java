@@ -1,27 +1,20 @@
 package com.atmosg.windai;
 
-import static org.mockito.Mockito.when;
-
 import java.time.LocalDateTime;
-import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import com.atmosg.windai.dto.MetarRetrievalPeriod;
-import com.atmosg.windai.ports.input.ObservationTimeAnalysisInputPort;
 import com.atmosg.windai.ports.output.MetarManagementOutputPort;
 import com.atmosg.windai.unit.LengthUnit;
 import com.atmosg.windai.unit.PressureUnit;
 import com.atmosg.windai.unit.SpeedUnit;
 import com.atmosg.windai.unit.TemperatureUnit;
-import com.atmosg.windai.usecases.ObservationTimeAnalysisUsecase;
+import com.atmosg.windai.usecases.MetarObservationTimeQueryUsecase;
 import com.atmosg.windai.vo.metar.Metar;
 import com.atmosg.windai.vo.metar.field.Cloud;
 import com.atmosg.windai.vo.metar.field.CloudGroup;
@@ -36,14 +29,12 @@ import com.atmosg.windai.vo.metar.type.CloudCoverage;
 import com.atmosg.windai.vo.metar.type.CloudType;
 import com.atmosg.windai.vo.metar.type.MetarReportType;
 
-import io.cucumber.java.Before;
-
 public class TestData {
 
   @Mock
   protected MetarManagementOutputPort metarOutputPort;
 
-  protected ObservationTimeAnalysisUsecase timeUseCase;
+  protected MetarObservationTimeQueryUsecase timeUseCase;
   
   protected MetarRetrievalPeriod period;
   protected List<Metar> metarList = new ArrayList<>();

@@ -9,7 +9,7 @@ import com.atmosg.windai.unit.PressureUnit;
 import com.atmosg.windai.unit.SpeedUnit;
 import com.atmosg.windai.unit.TemperatureUnit;
 
-public interface ObservationTimeAnalysisUsecase {
+public interface MetarObservationTimeQueryUsecase {
   
   List<ZonedDateTime> findTimeWhenVisibilityAtMost(MetarRetrievalPeriod period, int threshold, LengthUnit unit);
 

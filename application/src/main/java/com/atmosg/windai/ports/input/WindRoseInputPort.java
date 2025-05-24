@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 import com.atmosg.windai.dto.DirectionBin;
@@ -44,6 +45,7 @@ public class WindRoseInputPort implements WindRoseUsecase {
   private WindRose buildWindRoseForMonth(List<Metar> metarList, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
     Map<WindRose.BinPair, Long> freq = WindRose.initFreqencyMap(speedBins, directionBins);
 
+    AtomicLong totalCount = new AtomicLong(0);
     for (Metar metar : metarList) {
       Wind w = metar.getWind();
       double deg = w.getDirection().getDegreeOrThrow();
@@ -56,10 +58,13 @@ public class WindRoseInputPort implements WindRoseUsecase {
           .findFirst()
           .map(db -> new WindRose.BinPair(sb, db))
         )
-        .ifPresent(bin -> freq.put(bin, freq.get(bin)+1));
+        .ifPresent(bin -> {
+          freq.put(bin, freq.get(bin)+1);
+          totalCount.incrementAndGet();
+        });
     }
     
-    return new WindRose(speedBins, directionBins, freq);
+    return new WindRose(speedBins, directionBins, freq, totalCount.get());
   }
   
 }
