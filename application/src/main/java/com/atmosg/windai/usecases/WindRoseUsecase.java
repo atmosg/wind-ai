@@ -4,10 +4,10 @@ import java.time.Month;
 import java.util.List;
 import java.util.Map;
 
-import com.atmosg.windai.dto.DirectionBin;
 import com.atmosg.windai.dto.MetarRetrievalPeriod;
-import com.atmosg.windai.dto.SpeedBin;
-import com.atmosg.windai.dto.WindRose;
+import com.atmosg.windai.dto.windrose.DirectionBin;
+import com.atmosg.windai.dto.windrose.SpeedBin;
+import com.atmosg.windai.dto.windrose.WindRose;
 
 public interface WindRoseUsecase {
   

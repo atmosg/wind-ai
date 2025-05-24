@@ -16,7 +16,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class CloudGroup {
-  
+
   private final List<Cloud> clouds;
 
   public CloudGroup(List<Cloud> clouds) {
@@ -25,21 +25,26 @@ public class CloudGroup {
 
   public static CloudGroup of(List<Cloud> clouds) {
     return CloudGroup.builder()
-      .clouds(clouds)
-      .build();
+        .clouds(clouds)
+        .build();
   }
 
   public int size() {
     return clouds.size();
   }
 
+  public int getLowestCeiling() {
+    return getLowestCeiling(List.of(CloudCoverage.BKN, CloudCoverage.OVC, CloudCoverage.VV))
+        .orElse(Integer.MAX_VALUE);
+  }
+
   public OptionalInt getLowestCeiling(List<CloudCoverage> coverages) {
     return clouds.stream()
-      .filter(cloud -> coverages.contains(cloud.getCoverage()))
-      .map(Cloud::getAltitudeOptional)
-      .flatMap(Optional::stream)
-      .mapToInt(Integer::intValue)
-      .min();
+        .filter(cloud -> coverages.contains(cloud.getCoverage()))
+        .map(Cloud::getAltitudeOptional)
+        .flatMap(Optional::stream)
+        .mapToInt(Integer::intValue)
+        .min();
   }
 
 }

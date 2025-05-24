@@ -56,7 +56,7 @@ public class TestData {
         .build();
 
     Visibility ev = Visibility.builder()
-        .visibility(10)
+        .value(10)
         .unit(LengthUnit.MILE)
         .build();
 

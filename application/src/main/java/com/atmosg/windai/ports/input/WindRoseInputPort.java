@@ -9,10 +9,10 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
-import com.atmosg.windai.dto.DirectionBin;
 import com.atmosg.windai.dto.MetarRetrievalPeriod;
-import com.atmosg.windai.dto.SpeedBin;
-import com.atmosg.windai.dto.WindRose;
+import com.atmosg.windai.dto.windrose.DirectionBin;
+import com.atmosg.windai.dto.windrose.SpeedBin;
+import com.atmosg.windai.dto.windrose.WindRose;
 import com.atmosg.windai.ports.output.MetarManagementOutputPort;
 import com.atmosg.windai.usecases.WindRoseUsecase;
 import com.atmosg.windai.vo.metar.Metar;

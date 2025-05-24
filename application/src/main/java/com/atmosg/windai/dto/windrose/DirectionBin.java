@@ -1,4 +1,4 @@
-package com.atmosg.windai.dto;
+package com.atmosg.windai.dto.windrose;
 
 public record DirectionBin(double startDegInclusive, double endDegExclusive, String label) {
 

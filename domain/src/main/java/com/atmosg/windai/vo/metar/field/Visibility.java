@@ -13,22 +13,22 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class Visibility {
 
-  private final double visibility;
+  private final double value;
   private final LengthUnit unit;
 
   public static Visibility of(double visibility, LengthUnit unit) {
     return Visibility.builder()
-        .visibility(visibility)
+        .value(visibility)
         .unit(unit)
         .build();
   }
 
   public boolean isAtLeast(double threshold, LengthUnit targetUnit) {
-    return this.unit.convertTo(visibility, targetUnit) >= threshold;
+    return this.unit.convertTo(value, targetUnit) >= threshold;
   }
 
   public boolean isAtMost(double threshold, LengthUnit targetUnit) {
-    return this.unit.convertTo(visibility, targetUnit) <= threshold;
+    return this.unit.convertTo(value, targetUnit) <= threshold;
   }
 
 }

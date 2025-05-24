@@ -1,4 +1,4 @@
-package com.atmosg.windai.dto;
+package com.atmosg.windai.dto.windrose;
 
 import java.util.Objects;
 
