@@ -14,7 +14,6 @@ import com.atmosg.windai.unit.LengthUnit;
 import com.atmosg.windai.unit.PressureUnit;
 import com.atmosg.windai.unit.SpeedUnit;
 import com.atmosg.windai.unit.TemperatureUnit;
-import com.atmosg.windai.usecases.MetarObservationTimeQueryUsecase;
 import com.atmosg.windai.vo.metar.Metar;
 import com.atmosg.windai.vo.metar.field.Cloud;
 import com.atmosg.windai.vo.metar.field.CloudGroup;
@@ -34,8 +33,6 @@ public class TestData {
   @Mock
   protected MetarManagementOutputPort metarOutputPort;
 
-  protected MetarObservationTimeQueryUsecase timeUseCase;
-  
   protected MetarRetrievalPeriod period;
   protected List<Metar> metarList = new ArrayList<>();
 
