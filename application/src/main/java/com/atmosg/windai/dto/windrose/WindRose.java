@@ -5,9 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 public class WindRose {
@@ -37,7 +37,7 @@ public class WindRose {
 
   public double getRate(SpeedBin speedBin, DirectionBin directionBin) {
     if (totalCount == 0) return 0;
-    return getFrequency(speedBin, directionBin) * 100 / totalCount;
+    return (double) getFrequency(speedBin, directionBin) * 100 / totalCount;
   }
 
   public static LinkedHashMap<BinPair, Long> initFreqencyMap(List<SpeedBin> speedBins, List<DirectionBin> directionBins) {

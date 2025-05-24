@@ -1,12 +1,8 @@
 package com.atmosg.windai.ports.input;
 
 import java.time.Month;
-import java.time.YearMonth;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 import com.atmosg.windai.dto.MetarRetrievalPeriod;
@@ -32,7 +28,7 @@ public class WindRoseInputPort implements WindRoseUsecase {
     List<Metar> metarsWithFixedWind = metarList.stream()
       .filter(m -> !m.getWind().getDirection().isVariable())
       .collect(Collectors.toList());
-
+    
     return metarsWithFixedWind.stream().collect(Collectors.groupingBy(m -> 
       Month.from(m.getObservationTime()),
       Collectors.collectingAndThen(
@@ -45,7 +41,7 @@ public class WindRoseInputPort implements WindRoseUsecase {
   private WindRose buildWindRoseForMonth(List<Metar> metarList, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
     Map<WindRose.BinPair, Long> freq = WindRose.initFreqencyMap(speedBins, directionBins);
 
-    AtomicLong totalCount = new AtomicLong(0);
+
     for (Metar metar : metarList) {
       Wind w = metar.getWind();
       double deg = w.getDirection().getDegreeOrThrow();
@@ -58,13 +54,11 @@ public class WindRoseInputPort implements WindRoseUsecase {
           .findFirst()
           .map(db -> new WindRose.BinPair(sb, db))
         )
-        .ifPresent(bin -> {
-          freq.put(bin, freq.get(bin)+1);
-          totalCount.incrementAndGet();
-        });
+        .ifPresent(bin -> freq.put(bin, freq.get(bin)+1));
+        
     }
     
-    return new WindRose(speedBins, directionBins, freq, totalCount.get());
+    return new WindRose(speedBins, directionBins, freq, metarList.size());
   }
   
 }
