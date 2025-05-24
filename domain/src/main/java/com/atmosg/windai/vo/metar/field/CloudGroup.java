@@ -1,6 +1,10 @@
 package com.atmosg.windai.vo.metar.field;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+
+import com.atmosg.windai.vo.metar.type.CloudCoverage;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -27,6 +31,15 @@ public class CloudGroup {
 
   public int size() {
     return clouds.size();
+  }
+
+  public OptionalInt getLowestCeiling(List<CloudCoverage> coverages) {
+    return clouds.stream()
+      .filter(cloud -> coverages.contains(cloud.getCoverage()))
+      .map(Cloud::getAltitudeOptional)
+      .flatMap(Optional::stream)
+      .mapToInt(Integer::intValue)
+      .min();
   }
 
 }
