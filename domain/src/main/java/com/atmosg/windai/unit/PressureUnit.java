@@ -3,18 +3,21 @@ package com.atmosg.windai.unit;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum PressureUnit {
+public enum PressureUnit implements Unit {
   
   HPA(1.0),
   INHG(0.02953);
 
   private final double toHpaFactor;
 
-  public double convertTo(double value, PressureUnit targetUnit) {
-    if (this == targetUnit) return value;
+  @Override
+  public double toBase(double value) {
+    return value * toHpaFactor;
+  }
 
-    double valueInHpa = value / toHpaFactor;
-    return valueInHpa * targetUnit.toHpaFactor;
+  @Override
+  public double fromBase(double baseValue) {
+    return baseValue / toHpaFactor;
   }
   
 }

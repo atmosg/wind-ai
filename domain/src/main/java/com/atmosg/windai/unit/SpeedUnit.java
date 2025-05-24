@@ -3,7 +3,7 @@ package com.atmosg.windai.unit;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum SpeedUnit {
+public enum SpeedUnit implements Unit {
 
   MPS(1.0, "MPS"),
   KT(1.94384, "KT"),
@@ -16,11 +16,14 @@ public enum SpeedUnit {
     return symbol;
   }
 
-  public double convertTo(double value, SpeedUnit targetUnit) {
-    if (this == targetUnit) return value;
+  @Override
+  public double toBase(double value) {
+    return value * toMpsFactor;
+  }
 
-    double valueInMps = value / toMpsFactor;
-    return valueInMps * targetUnit.toMpsFactor;
+  @Override
+  public double fromBase(double baseValue) {
+    return baseValue / toMpsFactor;
   }
 
 }

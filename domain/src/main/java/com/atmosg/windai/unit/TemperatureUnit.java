@@ -3,18 +3,27 @@ package com.atmosg.windai.unit;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum TemperatureUnit {
+public enum TemperatureUnit implements Unit {
   
   CELSIUS(1.0),
   FAHRENHEIT(1.8);
 
   private final double toCelsiusFactor;
 
-  public double convertTo(double value, TemperatureUnit targetUnit) {
-    if (this == targetUnit) return value;
+  @Override
+  public double toBase(double value) {
+    return switch (this) {
+      case CELSIUS -> value;
+      case FAHRENHEIT -> value * toCelsiusFactor + 32;
+    };
+  }
 
-    double valueInCelsius = (value - 32) / toCelsiusFactor;
-    return valueInCelsius * targetUnit.toCelsiusFactor + 32;
+  @Override
+  public double fromBase(double baseValue) {
+    return switch (this) {
+      case CELSIUS -> baseValue;
+      case FAHRENHEIT -> (baseValue - 32) / toCelsiusFactor;
+    };
   }
 
 }
