@@ -22,25 +22,26 @@ import com.atmosg.windai.ports.input.WindRoseInputPort;
 import com.atmosg.windai.unit.SpeedUnit;
 import com.atmosg.windai.vo.metar.Metar;
 
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
 public class WindRoseTest extends TestData {
+
+  private Map<Month, WindRose> result;
   
-  public WindRoseTest() {
+  @Given("장기간 METAR 데이터 리스트를 보유하고 있다")
+  public void 장기간_METAR_데이터_리스트를_보유하고_있다() {
     init();
   }
-  
-  void init() {
-    MockitoAnnotations.openMocks(this);
-    loadData(2019, 1);
-    
-    this.windRoseUsecase = new WindRoseInputPort(metarOutputPort);
-    when(metarOutputPort.retrieveMetars(period))
-      .thenReturn(metarQuery);
+
+  @When("사용자가 바람장미 생성을 실행한다")
+  public void 사용자가_바람장미_생성을_실행한다() {
+    this.result = windRoseUsecase.generateMonthlyWindRose(period, speedBins, directionBins);
   }
 
-  @Test
-  public void 바람장미_생성에_성공해야한다() {
-    Map<Month, WindRose> monthlyWindRose = windRoseUsecase.generateMonthlyWindRose(period, speedBins, directionBins);
-
+  @Then("생성된 바람장미의 풍향_풍속별 비율의 총합은 100%이다")
+  public void 생성된_바람장미의_풍향_풍속별_비율의_총합은_100프로이다() {
     List<BinPair> binPairs = speedBins.stream()
       .flatMap(sb -> directionBins.stream()
         .map(db -> new WindRose.BinPair(sb, db)))
@@ -48,14 +49,22 @@ public class WindRoseTest extends TestData {
 
     
     double actual = binPairs.stream()
-      .flatMap(bp -> monthlyWindRose.values().stream()
+      .flatMap(bp -> result.values().stream()
         .map(wr -> wr.getRate(bp.speedBin(), bp.directionBin())))
       .mapToDouble(d -> d)
       .sum();
     
     double expect = 1200.0;
-    assertEquals(expect, actual, 0.1);
+    assertEquals(expect, actual, 0.0001);
+  }
 
+  void init() {
+    MockitoAnnotations.openMocks(this);
+    loadData(2019, 1);
+    
+    this.windRoseUsecase = new WindRoseInputPort(metarOutputPort);
+    when(metarOutputPort.retrieveMetars(period))
+      .thenReturn(metarQuery);
   }
 
 }
