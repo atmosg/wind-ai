@@ -30,18 +30,18 @@ public class WindRoseTest extends TestData {
 
   private Map<Month, WindRose> result;
   
-  @Given("장기간 METAR 데이터 리스트를 보유하고 있다")
-  public void 장기간_METAR_데이터_리스트를_보유하고_있다() {
+  @Given("1년치 METAR 데이터를 보유하고 있다")
+  public void METAR데이터_로드() {
     init();
   }
 
-  @When("사용자가 바람장미 생성을 실행한다")
-  public void 사용자가_바람장미_생성을_실행한다() {
+  @When("사용자가 월별 바람장미를 생성한다")
+  public void 생성_월별_바람장미() {
     this.result = windRoseUsecase.generateMonthlyWindRose(period, speedBins, directionBins);
   }
 
-  @Then("생성된 바람장미의 풍향_풍속별 비율의 총합은 100%이다")
-  public void 생성된_바람장미의_풍향_풍속별_비율의_총합은_100프로이다() {
+  @Then("모든 방향·속도 조합의 비율 합은 1200% 이어야 한다")
+  public void 검증_바람장미합계() {
     List<BinPair> binPairs = speedBins.stream()
       .flatMap(sb -> directionBins.stream()
         .map(db -> new WindRose.BinPair(sb, db)))
