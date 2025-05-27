@@ -1,15 +1,15 @@
-package org.windai.domain.policy.parser.metar.entry;
+package com.atmosg.windai.output.parser.metar.entry;
 
 import java.util.regex.Matcher;
 
-import org.windai.domain.policy.parser.metar.regex.MetarReportTypeRegexes;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.vo.MetarReportType;
-import org.windai.domain.vo.ReportFieldType;
+import com.atmosg.windai.output.parser.metar.regex.MetarReportTypeRegexes;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.vo.metar.type.MetarField;
+import com.atmosg.windai.vo.metar.type.MetarReportType;
 
 public class MetarReportTypeRegexParser extends ReportRegexParser<MetarReportType> {
 
-  private static final ReportFieldType FIELD_TYPE= ReportFieldType.REPORT_TYPE;
+  private static final MetarField FIELD_TYPE= MetarField.REPORT_TYPE;
   private static final String REPORT_TYPE_REGEX = MetarReportTypeRegexes.fullPattern();
     
   @Override
@@ -26,7 +26,7 @@ public class MetarReportTypeRegexParser extends ReportRegexParser<MetarReportTyp
   }
 
   @Override
-  public ReportFieldType getFieldType() {
+  public MetarField getFieldType() {
     return FIELD_TYPE;
   }
   

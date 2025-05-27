@@ -1,19 +1,19 @@
-package org.windai.domain.policy.parser.metar.entry;
+package com.atmosg.windai.output.parser.metar.entry;
 
 import java.math.RoundingMode;
 import java.util.regex.Matcher;
 
-import org.windai.domain.exception.GenericPolicyException;
-import org.windai.domain.policy.parser.metar.regex.AltimeterRegexs;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.policy.rounding.RoundingPolicy;
-import org.windai.domain.unit.PressureUnit;
-import org.windai.domain.vo.Pressure;
-import org.windai.domain.vo.ReportFieldType;
+import com.atmosg.windai.exception.GenericPolicyException;
+import com.atmosg.windai.output.parser.metar.regex.AltimeterRegexs;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.policy.rounding.RoundingPolicy;
+import com.atmosg.windai.unit.PressureUnit;
+import com.atmosg.windai.vo.metar.field.Pressure;
+import com.atmosg.windai.vo.metar.type.MetarField;
 
 public class AltimeterRegexParser extends ReportRegexParser<Pressure> {
 
-  private static final ReportFieldType FIELD_TYPE= ReportFieldType.ALTIMETER;
+  private static final MetarField FIELD_TYPE= MetarField.ALTIMETER;
   private static final String ALTIMETER_REGEX = AltimeterRegexs.fullPattern();
   private static final RoundingPolicy roundingPolicy = RoundingPolicy.of(0, RoundingMode.HALF_UP);
 
@@ -43,13 +43,13 @@ public class AltimeterRegexParser extends ReportRegexParser<Pressure> {
             
     return Pressure.builder()
         .value(altimeter)
-        .pressureUnit(unit)
+        .unit(unit)
         .build();
     
   }
 
   @Override
-  public ReportFieldType getFieldType() {
+  public MetarField getFieldType() {
     return FIELD_TYPE;
   }
 

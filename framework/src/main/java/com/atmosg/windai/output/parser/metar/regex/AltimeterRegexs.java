@@ -1,11 +1,10 @@
-package org.windai.domain.policy.parser.metar.regex;
+package com.atmosg.windai.output.parser.metar.regex;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.windai.domain.exception.GenericPolicyException;
-import org.windai.domain.policy.rounding.RoundingPolicy;
-import org.windai.domain.unit.PressureUnit;
+import com.atmosg.windai.policy.rounding.RoundingPolicy;
+import com.atmosg.windai.unit.PressureUnit;
 
 import lombok.AllArgsConstructor;
 
@@ -50,7 +49,7 @@ public enum AltimeterRegexs {
         return Double.parseDouble(strValue)/100;
       }
       default:
-        throw new GenericPolicyException("Invalid altimeter type: " + this);
+        throw new IllegalArgumentException("Invalid altimeter type: " + this);
     }
   }
 
@@ -63,7 +62,7 @@ public enum AltimeterRegexs {
         return policy.apply(hPa);
       }
       default:
-        throw new GenericPolicyException("Invalid altimeter type: " + this);
+        throw new IllegalArgumentException("Invalid altimeter type: " + this);
     }
   }
 
@@ -74,7 +73,7 @@ public enum AltimeterRegexs {
       case INCH_OF_MERCURY:
         return PressureUnit.INHG;
       default:
-        throw new GenericPolicyException("Invalid pressure unit: " + this);
+        throw new IllegalArgumentException("Invalid pressure unit: " + this);
     }
   }
 

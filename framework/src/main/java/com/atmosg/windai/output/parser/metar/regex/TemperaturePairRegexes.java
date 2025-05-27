@@ -1,6 +1,4 @@
-package org.windai.domain.policy.parser.metar.regex;
-
-import org.windai.domain.exception.GenericPolicyException;
+package com.atmosg.windai.output.parser.metar.regex;
 
 import lombok.AllArgsConstructor;
 
@@ -44,7 +42,7 @@ public enum TemperaturePairRegexes {
           ? -Double.parseDouble(strValue.substring(1))
           : Double.parseDouble(strValue);
       default:
-        throw new GenericPolicyException("Invalid temperature type: " + this);
+        throw new IllegalArgumentException("Invalid temperature type: " + this);
     }
   }
 

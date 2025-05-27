@@ -1,4 +1,4 @@
-package org.windai.domain.policy.parser.shared;
+package com.atmosg.windai.output.parser.shared;
 
 public interface ReportParser<T> {
   

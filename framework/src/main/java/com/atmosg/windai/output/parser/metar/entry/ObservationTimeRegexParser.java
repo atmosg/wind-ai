@@ -1,4 +1,4 @@
-package org.windai.domain.policy.parser.metar.entry;
+package com.atmosg.windai.output.parser.metar.entry;
 
 import java.time.LocalDateTime;
 import java.time.YearMonth;
@@ -6,17 +6,17 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.regex.Matcher;
 
-import org.windai.domain.exception.GenericPolicyException;
-import org.windai.domain.policy.parser.metar.regex.ObservationTimeRegexes;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.vo.ReportFieldType;
+import com.atmosg.windai.exception.GenericPolicyException;
+import com.atmosg.windai.output.parser.metar.regex.ObservationTimeRegexes;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.vo.metar.type.MetarField;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class ObservationTimeRegexParser extends ReportRegexParser<ZonedDateTime> {
 
-  private static final ReportFieldType FIELD_TYPE= ReportFieldType.OBSERVATION_TIME;
+  private static final MetarField FIELD_TYPE= MetarField.OBSERVATION_TIME;
   private static final String TIME_REGEX = ObservationTimeRegexes.fullPattern();
   
   private final YearMonth yearMonth;
@@ -45,7 +45,7 @@ public class ObservationTimeRegexParser extends ReportRegexParser<ZonedDateTime>
   }
 
   @Override
-  public ReportFieldType getFieldType() {
+  public MetarField getFieldType() {
     return FIELD_TYPE;
   }
 

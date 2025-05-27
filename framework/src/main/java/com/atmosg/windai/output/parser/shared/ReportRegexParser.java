@@ -1,13 +1,13 @@
-package org.windai.domain.policy.parser.shared;
+package com.atmosg.windai.output.parser.shared;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.windai.domain.vo.ReportFieldType;
+import com.atmosg.windai.vo.metar.type.MetarField;
 
 public abstract class ReportRegexParser<T> implements ReportParser<T> {
 
-  public abstract ReportFieldType getFieldType();
+  public abstract MetarField getFieldType();
 
   protected Matcher getMatcher(String rawText, String regex) {
     Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);

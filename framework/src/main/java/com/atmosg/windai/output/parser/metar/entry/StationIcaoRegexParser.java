@@ -1,18 +1,18 @@
-package org.windai.domain.policy.parser.metar.entry;
+package com.atmosg.windai.output.parser.metar.entry;
 
 import java.util.regex.Matcher;
 
-import org.windai.domain.exception.GenericPolicyException;
-import org.windai.domain.policy.parser.metar.regex.StationIcaoRegexes;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.vo.ReportFieldType;
+import com.atmosg.windai.exception.GenericPolicyException;
+import com.atmosg.windai.output.parser.metar.regex.StationIcaoRegexes;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.vo.metar.type.MetarField;
 
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class StationIcaoRegexParser extends ReportRegexParser<String> {
 
-  private final ReportFieldType fieldType = ReportFieldType.STATION_ICAO;
+  private final MetarField fieldType = MetarField.STATION_ICAO;
   private final String STATION_REGEX = StationIcaoRegexes.fullPattern();
 
   @Override
@@ -29,7 +29,7 @@ public class StationIcaoRegexParser extends ReportRegexParser<String> {
   }
 
   @Override
-  public ReportFieldType getFieldType() {
+  public MetarField getFieldType() {
     return fieldType;
   }
   

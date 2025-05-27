@@ -1,19 +1,18 @@
-package org.windai.domain.policy.parser.metar.entry;
+package com.atmosg.windai.output.parser.metar.entry;
 
 import java.math.RoundingMode;
 import java.util.regex.Matcher;
 
-import org.windai.domain.exception.GenericPolicyException;
-import org.windai.domain.policy.parser.metar.regex.VisibilityRegexes;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.policy.rounding.RoundingPolicy;
-import org.windai.domain.unit.LengthUnit;
-import org.windai.domain.vo.ReportFieldType;
-import org.windai.domain.vo.Visibility;
+import com.atmosg.windai.output.parser.metar.regex.VisibilityRegexes;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.policy.rounding.RoundingPolicy;
+import com.atmosg.windai.unit.LengthUnit;
+import com.atmosg.windai.vo.metar.field.Visibility;
+import com.atmosg.windai.vo.metar.type.MetarField;
 
 public class VisibilityRegexParser extends ReportRegexParser<Visibility> {
 
-  private static final ReportFieldType FIELD_TYPE= ReportFieldType.VISIBILITY;
+  private static final MetarField FIELD_TYPE= MetarField.VISIBILITY;
   private static final String VISIBILITY_REGEX = VisibilityRegexes.fullPattern();
   private static final RoundingPolicy policy = RoundingPolicy.of(0, RoundingMode.HALF_UP);
 
@@ -22,7 +21,7 @@ public class VisibilityRegexParser extends ReportRegexParser<Visibility> {
     Matcher matcher = getMatcher(rawText, VISIBILITY_REGEX);
 
     if (!check(matcher)) {
-      throw new GenericPolicyException("Visibility not found in report: " + rawText);
+      throw new IllegalArgumentException("Visibility not found in report: " + rawText);
     }
 
     double visibility = -1;
@@ -39,17 +38,17 @@ public class VisibilityRegexParser extends ReportRegexParser<Visibility> {
     }
 
     if (visibility < 0) {
-      throw new GenericPolicyException("Visibility not found in report: " + rawText);
+      throw new IllegalArgumentException("Visibility not found in report: " + rawText);
     }
 
     return Visibility.builder()
-        .visibility(visibility)
-        .lengthUnit(unit)
+        .value(visibility)
+        .unit(unit)
         .build();
   }
 
   @Override
-  public ReportFieldType getFieldType() {
+  public MetarField getFieldType() {
     return FIELD_TYPE;
   }
 

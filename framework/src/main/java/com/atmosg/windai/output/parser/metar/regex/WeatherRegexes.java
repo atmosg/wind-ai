@@ -1,12 +1,12 @@
-package org.windai.domain.policy.parser.metar.regex;
+package com.atmosg.windai.output.parser.metar.regex;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import org.windai.domain.vo.WeatherDescriptor;
-import org.windai.domain.vo.WeatherInensity;
-import org.windai.domain.vo.WeatherPhenomenon;
+import com.atmosg.windai.vo.metar.type.WeatherDescriptor;
+import com.atmosg.windai.vo.metar.type.WeatherInensity;
+import com.atmosg.windai.vo.metar.type.WeatherPhenomenon;
 
 public enum WeatherRegexes {
   

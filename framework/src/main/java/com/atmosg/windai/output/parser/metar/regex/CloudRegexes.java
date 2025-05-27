@@ -1,10 +1,10 @@
-package org.windai.domain.policy.parser.metar.regex;
+package com.atmosg.windai.output.parser.metar.regex;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.windai.domain.vo.CloudCoverage;
-import org.windai.domain.vo.CloudType;
+import com.atmosg.windai.vo.metar.type.CloudCoverage;
+import com.atmosg.windai.vo.metar.type.CloudType;
 
 import lombok.AllArgsConstructor;
 

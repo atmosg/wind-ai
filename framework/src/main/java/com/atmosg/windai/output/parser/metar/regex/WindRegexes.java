@@ -1,9 +1,9 @@
-package org.windai.domain.policy.parser.metar.regex;
+package com.atmosg.windai.output.parser.metar.regex;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.windai.domain.unit.SpeedUnit;
+import com.atmosg.windai.unit.SpeedUnit;
 
 import lombok.AllArgsConstructor;
 

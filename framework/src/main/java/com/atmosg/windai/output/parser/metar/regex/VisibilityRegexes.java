@@ -1,15 +1,15 @@
-package org.windai.domain.policy.parser.metar.regex;
+package com.atmosg.windai.output.parser.metar.regex;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.windai.domain.exception.GenericPolicyException;
-import org.windai.domain.policy.rounding.RoundingPolicy;
-import org.windai.domain.unit.LengthUnit;
+import com.atmosg.windai.exception.GenericPolicyException;
+import com.atmosg.windai.policy.rounding.RoundingPolicy;
+import com.atmosg.windai.unit.LengthUnit;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public enum VisibilityRegexes {
 
   DIGIT("digit","(?<digit>\\d{2,4})"),
@@ -63,7 +63,7 @@ public enum VisibilityRegexes {
         return whole + (numerator / denominator);
       }
       default:
-        throw new GenericPolicyException("Invalid visibility type: " + this);
+        throw new IllegalArgumentException("Invalid visibility type: " + this);
     }
   }
 
@@ -95,7 +95,7 @@ public enum VisibilityRegexes {
         return policy.apply(LengthUnit.MILE.convertTo(miles, LengthUnit.METERS));
       }
       default:
-        throw new GenericPolicyException("Invalid visibility type: " + this);
+        throw new IllegalArgumentException("Invalid visibility type: " + this);
     }
   }
 
@@ -110,7 +110,7 @@ public enum VisibilityRegexes {
       case IMPROPER_FRACTION_MILE:
         return LengthUnit.MILE;
       default:
-        throw new GenericPolicyException("Invalid visibility unit: " + this);
+        throw new IllegalArgumentException("Invalid visibility unit: " + this);
     }
   }
 

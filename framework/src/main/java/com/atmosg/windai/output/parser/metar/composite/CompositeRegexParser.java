@@ -1,24 +1,24 @@
-package org.windai.domain.policy.parser.metar.composite;
+package com.atmosg.windai.output.parser.metar.composite;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.windai.domain.policy.parser.shared.ReportParser;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.vo.ReportFieldType;
+import com.atmosg.windai.output.parser.shared.ReportParser;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.vo.metar.type.MetarField;
 
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class CompositeRegexParser implements ReportParser<Map<ReportFieldType, Object>> {
+public class CompositeRegexParser implements ReportParser<Map<MetarField, Object>> {
 
   private final List<ReportRegexParser<?>> entires = new ArrayList<>();
 
   @Override
-  public Map<ReportFieldType, Object> parse(String rawText) {
-    Map<ReportFieldType, Object> parsingResultMap = new HashMap<>();
+  public Map<MetarField, Object> parse(String rawText) {
+    Map<MetarField, Object> parsingResultMap = new HashMap<>();
 
     for (ReportRegexParser<?> entryParser : entires) {
       parsingResultMap.put(entryParser.getFieldType(), entryParser.parse(rawText));

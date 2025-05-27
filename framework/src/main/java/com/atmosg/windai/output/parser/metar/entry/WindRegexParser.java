@@ -1,19 +1,18 @@
-package org.windai.domain.policy.parser.metar.entry;
+package com.atmosg.windai.output.parser.metar.entry;
 
 import java.util.regex.Matcher;
 
-import org.windai.domain.exception.GenericPolicyException;
-import org.windai.domain.policy.parser.metar.regex.WindRegexes;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.unit.SpeedUnit;
-import org.windai.domain.vo.ReportFieldType;
-import org.windai.domain.vo.Wind;
-import org.windai.domain.vo.WindDirection;
-import org.windai.domain.vo.WindDirectionType;
+import com.atmosg.windai.output.parser.metar.regex.WindRegexes;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.unit.SpeedUnit;
+import com.atmosg.windai.vo.metar.field.Wind;
+import com.atmosg.windai.vo.metar.field.WindDirection;
+import com.atmosg.windai.vo.metar.type.MetarField;
+import com.atmosg.windai.vo.metar.type.WindDirectionType;
 
 public class WindRegexParser extends ReportRegexParser<Wind> {
     
-  private static final ReportFieldType FIELD_TYPE = ReportFieldType.WIND;
+  private static final MetarField FIELD_TYPE = MetarField.WIND;
   private static final String WIND_REGEX = WindRegexes.fullPattern();
   
   @Override
@@ -21,7 +20,7 @@ public class WindRegexParser extends ReportRegexParser<Wind> {
     Matcher matcher = getMatcher(rawText, WIND_REGEX);
 
     if (!check(matcher)) {
-      throw new GenericPolicyException("Wind not found in report:  " + rawText);
+      throw new IllegalArgumentException("Wind not found in report:  " + rawText);
     }
 
     String windDirection = matcher.group(WindRegexes.DIRECTION.getGroupName());
@@ -41,12 +40,12 @@ public class WindRegexParser extends ReportRegexParser<Wind> {
         .direction(direction)
         .speed(windSpeedValue)
         .gusts(windGustsValue)
-        .speedUnit(speedUnit)
+        .unit(speedUnit)
         .build();
   }
 
   @Override
-  public ReportFieldType getFieldType() {
+  public MetarField getFieldType() {
     return FIELD_TYPE;
   }
 

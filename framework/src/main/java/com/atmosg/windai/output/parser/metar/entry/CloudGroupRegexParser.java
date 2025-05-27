@@ -1,18 +1,18 @@
-package org.windai.domain.policy.parser.metar.entry;
+package com.atmosg.windai.output.parser.metar.entry;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 
-import org.windai.domain.policy.parser.metar.regex.CloudRegexes;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.vo.Cloud;
-import org.windai.domain.vo.CloudGroup;
-import org.windai.domain.vo.ReportFieldType;
+import com.atmosg.windai.output.parser.metar.regex.CloudRegexes;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.vo.metar.field.Cloud;
+import com.atmosg.windai.vo.metar.field.CloudGroup;
+import com.atmosg.windai.vo.metar.type.MetarField;
 
 public class CloudGroupRegexParser extends ReportRegexParser<CloudGroup> {
 
-  private static final ReportFieldType FIELD_TYPE = ReportFieldType.CLOUD_GROUP;
+  private static final MetarField FIELD_TYPE = MetarField.CLOUD_GROUP;
   private static final String CLOUD_REGEX = CloudRegexes.fullPattern();
 
   @Override
@@ -34,7 +34,7 @@ public class CloudGroupRegexParser extends ReportRegexParser<CloudGroup> {
   }
 
   @Override
-  public ReportFieldType getFieldType() {
+  public MetarField getFieldType() {
     return FIELD_TYPE;
   }
 

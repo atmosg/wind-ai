@@ -1,18 +1,18 @@
-package org.windai.domain.policy.parser.metar.entry;
+package com.atmosg.windai.output.parser.metar.entry;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 
-import org.windai.domain.policy.parser.metar.regex.WeatherRegexes;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.vo.ReportFieldType;
-import org.windai.domain.vo.Weather;
-import org.windai.domain.vo.WeatherGroup;
+import com.atmosg.windai.output.parser.metar.regex.WeatherRegexes;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.vo.metar.field.Weather;
+import com.atmosg.windai.vo.metar.field.WeatherGroup;
+import com.atmosg.windai.vo.metar.type.MetarField;
 
 public class WeatherGroupRegexParser extends ReportRegexParser<WeatherGroup> {
 
-  private static final ReportFieldType FIELD_TYPE= ReportFieldType.WEATHER_GROUP;
+  private static final MetarField FIELD_TYPE= MetarField.WEATHER_GROUP;
   private static final String WEATHER_REGEX = WeatherRegexes.fullPattern();
 
   @Override
@@ -34,7 +34,7 @@ public class WeatherGroupRegexParser extends ReportRegexParser<WeatherGroup> {
   }
 
   @Override
-  public ReportFieldType getFieldType() {
+  public MetarField getFieldType() {
     return FIELD_TYPE;
   }
   

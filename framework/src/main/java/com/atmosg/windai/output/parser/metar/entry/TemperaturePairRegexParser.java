@@ -1,20 +1,20 @@
-package org.windai.domain.policy.parser.metar.entry;
+package com.atmosg.windai.output.parser.metar.entry;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 
-import org.windai.domain.exception.GenericPolicyException;
-import org.windai.domain.policy.parser.metar.regex.TemperaturePairRegexes;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.unit.TemperatureUnit;
-import org.windai.domain.vo.ReportFieldType;
-import org.windai.domain.vo.Temperature;
-import org.windai.domain.vo.TemperaturePair;
+import com.atmosg.windai.exception.GenericPolicyException;
+import com.atmosg.windai.output.parser.metar.regex.TemperaturePairRegexes;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.unit.TemperatureUnit;
+import com.atmosg.windai.vo.metar.field.Temperature;
+import com.atmosg.windai.vo.metar.field.TemperaturePair;
+import com.atmosg.windai.vo.metar.type.MetarField;
 
 public class TemperaturePairRegexParser extends ReportRegexParser<TemperaturePair> {
 
-  private static final ReportFieldType FIELD_TYPE= ReportFieldType.TEMPERATURE_PAIR;
+  private static final MetarField FIELD_TYPE= MetarField.TEMPERATURE_PAIR;
   private static final String TEMPERATURE_PAIR_REGEX = TemperaturePairRegexes.fullPattern();
 
   @Override
@@ -48,7 +48,7 @@ public class TemperaturePairRegexParser extends ReportRegexParser<TemperaturePai
   }
 
   @Override
-  public ReportFieldType getFieldType() {
+  public MetarField getFieldType() {
     return FIELD_TYPE;
   }
   

@@ -1,4 +1,4 @@
-package org.windai.domain.policy.parser.metar.regex;
+package com.atmosg.windai.output.parser.metar.regex;
 
 import lombok.RequiredArgsConstructor;
 

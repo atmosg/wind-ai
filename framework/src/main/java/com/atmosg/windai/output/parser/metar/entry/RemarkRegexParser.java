@@ -1,14 +1,14 @@
-package org.windai.domain.policy.parser.metar.entry;
+package com.atmosg.windai.output.parser.metar.entry;
 
 import java.util.regex.Matcher;
 
-import org.windai.domain.policy.parser.metar.regex.RemarkRegexes;
-import org.windai.domain.policy.parser.shared.ReportRegexParser;
-import org.windai.domain.vo.ReportFieldType;
+import com.atmosg.windai.output.parser.metar.regex.RemarkRegexes;
+import com.atmosg.windai.output.parser.shared.ReportRegexParser;
+import com.atmosg.windai.vo.metar.type.MetarField;
 
 public class RemarkRegexParser extends ReportRegexParser<String> {
 
-  private static final ReportFieldType FIELD_TYPE= ReportFieldType.REMARKS;
+  private static final MetarField FIELD_TYPE= MetarField.REMARKS;
   private static final String REMARK_REGEX = RemarkRegexes.fullPattern();
 
   @Override
@@ -33,7 +33,7 @@ public class RemarkRegexParser extends ReportRegexParser<String> {
   }
 
   @Override
-  public ReportFieldType getFieldType() {
+  public MetarField getFieldType() {
     return FIELD_TYPE;
   }
   

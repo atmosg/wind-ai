@@ -1,9 +1,9 @@
-package org.windai.domain.policy.parser.metar.regex;
+package com.atmosg.windai.output.parser.metar.regex;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.windai.domain.vo.MetarReportType;
+import com.atmosg.windai.vo.metar.type.MetarReportType;
 
 import lombok.RequiredArgsConstructor;
 
