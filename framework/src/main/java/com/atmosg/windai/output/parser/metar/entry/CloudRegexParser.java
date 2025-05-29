@@ -2,7 +2,6 @@ package com.atmosg.windai.output.parser.metar.entry;
 
 import java.util.regex.Matcher;
 
-import com.atmosg.windai.exception.GenericPolicyException;
 import com.atmosg.windai.output.parser.metar.regex.CloudRegexes;
 import com.atmosg.windai.output.parser.shared.ReportRegexParser;
 import com.atmosg.windai.vo.metar.field.Cloud;
@@ -38,7 +37,7 @@ public class CloudRegexParser extends ReportRegexParser<Cloud> {
 
     if (coverage.requiresAltitude()) {
       if (altitude == null) {
-        throw new GenericPolicyException("Altitude not found in report: " + rawText);
+        throw new IllegalArgumentException("Altitude not found in report: " + rawText);
       }
 
       return Cloud.builder()

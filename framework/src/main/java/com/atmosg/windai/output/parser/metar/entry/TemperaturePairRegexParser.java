@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 
-import com.atmosg.windai.exception.GenericPolicyException;
 import com.atmosg.windai.output.parser.metar.regex.TemperaturePairRegexes;
 import com.atmosg.windai.output.parser.shared.ReportRegexParser;
 import com.atmosg.windai.unit.TemperatureUnit;
@@ -22,7 +21,7 @@ public class TemperaturePairRegexParser extends ReportRegexParser<TemperaturePai
     Matcher matcher = getMatcher(rawText, TEMPERATURE_PAIR_REGEX);
 
     if (!check(matcher)) {
-      throw new GenericPolicyException("TemperaturePair not found in report: " + rawText);
+      throw new IllegalArgumentException("TemperaturePair not found in report: " + rawText);
     }
     
     Map<String, Temperature> temperatureMap = new HashMap<>();
@@ -30,7 +29,7 @@ public class TemperaturePairRegexParser extends ReportRegexParser<TemperaturePai
       String match = matcher.group(type.getGroupName());
       
       if (match == null || match.isEmpty()) {
-        throw new GenericPolicyException("Temperature must always exist as a pair: " + rawText);
+        throw new IllegalArgumentException("Temperature must always exist as a pair: " + rawText);
       }
 
       temperatureMap.put(type.getGroupName(), Temperature.builder()

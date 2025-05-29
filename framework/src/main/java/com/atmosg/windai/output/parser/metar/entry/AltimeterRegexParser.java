@@ -3,7 +3,6 @@ package com.atmosg.windai.output.parser.metar.entry;
 import java.math.RoundingMode;
 import java.util.regex.Matcher;
 
-import com.atmosg.windai.exception.GenericPolicyException;
 import com.atmosg.windai.output.parser.metar.regex.AltimeterRegexs;
 import com.atmosg.windai.output.parser.shared.ReportRegexParser;
 import com.atmosg.windai.policy.rounding.RoundingPolicy;
@@ -21,7 +20,7 @@ public class AltimeterRegexParser extends ReportRegexParser<Pressure> {
   public Pressure parse(String rawText) {
     Matcher matcher = getMatcher(rawText, ALTIMETER_REGEX);
     if (!check(matcher)) {
-      throw new GenericPolicyException("Altimeter not found in report: " + rawText);
+      throw new IllegalArgumentException("Altimeter not found in report: " + rawText);
     }
 
     double altimeter = -1;
@@ -38,7 +37,7 @@ public class AltimeterRegexParser extends ReportRegexParser<Pressure> {
     }
 
     if (altimeter < 0) {
-      throw new GenericPolicyException("Altimeter not found in report: " + rawText);
+      throw new IllegalArgumentException("Altimeter not found in report: " + rawText);
     }
             
     return Pressure.builder()

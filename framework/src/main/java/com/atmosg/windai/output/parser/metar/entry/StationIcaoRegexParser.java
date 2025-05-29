@@ -2,7 +2,6 @@ package com.atmosg.windai.output.parser.metar.entry;
 
 import java.util.regex.Matcher;
 
-import com.atmosg.windai.exception.GenericPolicyException;
 import com.atmosg.windai.output.parser.metar.regex.StationIcaoRegexes;
 import com.atmosg.windai.output.parser.shared.ReportRegexParser;
 import com.atmosg.windai.vo.metar.type.MetarField;
@@ -20,7 +19,7 @@ public class StationIcaoRegexParser extends ReportRegexParser<String> {
     Matcher matcher = getMatcher(rawText, STATION_REGEX);
     
     if (!check(matcher)) {
-      throw new GenericPolicyException("Station not found in report: " + rawText);
+      throw new IllegalArgumentException("Station not found in report: " + rawText);
     }
 
     String station = matcher.group(StationIcaoRegexes.STATION.getGroupName());

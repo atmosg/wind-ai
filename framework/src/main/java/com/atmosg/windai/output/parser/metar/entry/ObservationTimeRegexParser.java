@@ -6,7 +6,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.regex.Matcher;
 
-import com.atmosg.windai.exception.GenericPolicyException;
 import com.atmosg.windai.output.parser.metar.regex.ObservationTimeRegexes;
 import com.atmosg.windai.output.parser.shared.ReportRegexParser;
 import com.atmosg.windai.vo.metar.type.MetarField;
@@ -26,7 +25,7 @@ public class ObservationTimeRegexParser extends ReportRegexParser<ZonedDateTime>
     Matcher matcher = getMatcher(rawText, TIME_REGEX);
     
     if (!check(matcher)) {
-      throw new GenericPolicyException("Observation time not found in report:  " + rawText);
+      throw new IllegalArgumentException("Observation time not found in report:  " + rawText);
     }
 
     int day = Integer.parseInt(matcher.group(ObservationTimeRegexes.DAY.getGroupName()));

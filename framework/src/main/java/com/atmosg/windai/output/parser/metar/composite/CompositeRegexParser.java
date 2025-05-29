@@ -31,4 +31,15 @@ public class CompositeRegexParser implements ReportParser<Map<MetarField, Object
     this.entires.add(entryParser);
   }
 
+  public void remove(ReportRegexParser<?> entryParser) {
+    this.entires.remove(entryParser);
+  }
+
+  public void changeParser(ReportRegexParser<?> oldParser, ReportRegexParser<?> newParser) {
+    int index = this.entires.indexOf(oldParser);
+    if (index != -1) {
+      this.entires.set(index, newParser);
+    }
+  }
+
 }
