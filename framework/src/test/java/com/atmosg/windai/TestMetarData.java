@@ -45,7 +45,7 @@ public class TestMetarData {
         Temperature.of(18, CELSIUS),
         Temperature.of(12, CELSIUS)
       ))
-      .altimeter(Pressure.of(2995, INHG))
+      .altimeter(Pressure.of(29.95, INHG))
       .weatherGroup(WeatherGroup.of(List.of()))
       .cloudGroup(CloudGroup.of(
         List.of(
@@ -53,7 +53,7 @@ public class TestMetarData {
           Cloud.of(CloudCoverage.SCT, 25000, CloudType.NONE)
         )
       ))
-      .remarks("RMK AO2 SLP142 T01780122=")
+      .remarks("AO2 SLP142 T01780122=")
       .build()
   );
 

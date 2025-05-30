@@ -37,5 +37,4 @@ public class Metar {
   private final CloudGroup cloudGroup;
   private final String remarks;
 
-
 }

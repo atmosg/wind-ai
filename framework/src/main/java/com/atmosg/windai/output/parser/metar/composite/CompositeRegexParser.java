@@ -1,10 +1,12 @@
 package com.atmosg.windai.output.parser.metar.composite;
 
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.atmosg.windai.output.parser.metar.entry.ObservationTimeRegexParser;
 import com.atmosg.windai.output.parser.shared.ReportParser;
 import com.atmosg.windai.output.parser.shared.ReportRegexParser;
 import com.atmosg.windai.vo.metar.type.MetarField;
@@ -30,16 +32,22 @@ public class CompositeRegexParser implements ReportParser<Map<MetarField, Object
   public void add(ReportRegexParser<?> entryParser) {
     this.entires.add(entryParser);
   }
-
-  public void remove(ReportRegexParser<?> entryParser) {
-    this.entires.remove(entryParser);
+  
+  public void setYearMonth(YearMonth yearMonth) {
+    for (int i=0; i<entires.size(); i++) {
+      if (entires.get(i) instanceof ObservationTimeRegexParser otp) {
+        entires.set(i, otp.withYearMonth(yearMonth));
+      }
+    }
   }
 
-  public void changeParser(ReportRegexParser<?> oldParser, ReportRegexParser<?> newParser) {
-    int index = this.entires.indexOf(oldParser);
-    if (index != -1) {
-      this.entires.set(index, newParser);
-    }
+  public YearMonth getYearMonth() {
+    return entires.stream()
+      .filter(ObservationTimeRegexParser.class::isInstance)
+      .map(ObservationTimeRegexParser.class::cast)
+      .map(ObservationTimeRegexParser::getYearMonth)
+      .findFirst()
+      .orElseThrow(() -> new IllegalStateException("ObservationTimeRegexParser not found in entries"));
   }
 
 }

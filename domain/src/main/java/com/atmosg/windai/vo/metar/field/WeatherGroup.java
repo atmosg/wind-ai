@@ -26,6 +26,12 @@ public class WeatherGroup {
       .weatherList(weatherList)
       .build();
   }
+
+  public static WeatherGroup ofEmpty() {
+    return WeatherGroup.builder()
+      .weatherList(List.of())
+      .build();
+  }
   
   public boolean containsPhenomena(String target) {
     return weatherList.stream()

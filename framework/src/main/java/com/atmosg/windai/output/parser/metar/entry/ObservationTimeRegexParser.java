@@ -10,6 +10,7 @@ import com.atmosg.windai.output.parser.metar.regex.ObservationTimeRegexes;
 import com.atmosg.windai.output.parser.shared.ReportRegexParser;
 import com.atmosg.windai.vo.metar.type.MetarField;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -18,6 +19,7 @@ public class ObservationTimeRegexParser extends ReportRegexParser<ZonedDateTime>
   private static final MetarField FIELD_TYPE= MetarField.OBSERVATION_TIME;
   private static final String TIME_REGEX = ObservationTimeRegexes.fullPattern();
   
+  @Getter
   private final YearMonth yearMonth;
 
   @Override
@@ -41,6 +43,10 @@ public class ObservationTimeRegexParser extends ReportRegexParser<ZonedDateTime>
     );
 
     return ZonedDateTime.of(local, ZoneId.of("UTC"));    
+  }
+
+  public ObservationTimeRegexParser withYearMonth(YearMonth yearMonth) {
+    return new ObservationTimeRegexParser(yearMonth);
   }
 
   @Override

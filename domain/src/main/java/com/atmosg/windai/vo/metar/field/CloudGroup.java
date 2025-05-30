@@ -29,6 +29,12 @@ public class CloudGroup {
         .build();
   }
 
+  public static CloudGroup ofEmpty() {
+    return CloudGroup.builder()
+        .clouds(List.of())
+        .build();
+  }
+
   public int size() {
     return clouds.size();
   }
