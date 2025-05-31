@@ -27,6 +27,7 @@ public class Metar {
   private final String stationIcao;
   private final MetarReportType reportType;
   private final ZonedDateTime observationTime;
+  private final ZonedDateTime reportTime;
   private final Wind wind;
   private final Visibility visibility;
   private final TemperaturePair temperaturePair;

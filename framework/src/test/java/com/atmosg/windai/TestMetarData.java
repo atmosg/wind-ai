@@ -32,6 +32,7 @@ public class TestMetarData {
       .stationIcao("KSFO")
       .reportType(METAR)
       .observationTime(generateTime("030953"))
+      .reportTime(generateTime("031000"))
       .wind(generateWind(290,8,0))
       .visibility(Visibility.of(10, MILE))
       .temperaturePair(TemperaturePair.of(

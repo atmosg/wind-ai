@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.atmosg.windai.parser.metar.generic.entry.ObservationTimeRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.ReportTimeRegexParser;
 import com.atmosg.windai.parser.shared.ReportParser;
 import com.atmosg.windai.parser.shared.ReportRegexParser;
 import com.atmosg.windai.vo.metar.type.MetarField;
@@ -37,6 +38,9 @@ public class CompositeRegexParser implements ReportParser<Map<MetarField, Object
     for (int i=0; i<entires.size(); i++) {
       if (entires.get(i) instanceof ObservationTimeRegexParser otp) {
         entires.set(i, otp.withYearMonth(yearMonth));
+      }
+      else if (entires.get(i) instanceof ReportTimeRegexParser rtp) {
+        entires.set(i, rtp.withYearMonth(yearMonth));
       }
     }
   }

@@ -11,6 +11,7 @@ import com.atmosg.windai.parser.metar.generic.entry.CloudGroupRegexParser;
 import com.atmosg.windai.parser.metar.generic.entry.MetarReportTypeRegexParser;
 import com.atmosg.windai.parser.metar.generic.entry.ObservationTimeRegexParser;
 import com.atmosg.windai.parser.metar.generic.entry.RemarkRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.ReportTimeRegexParser;
 import com.atmosg.windai.parser.metar.generic.entry.StationIcaoRegexParser;
 import com.atmosg.windai.parser.metar.generic.entry.TemperaturePairRegexParser;
 import com.atmosg.windai.parser.metar.generic.entry.VisibilityRegexParser;
@@ -45,6 +46,7 @@ public class MetarParser {
           .stationIcao((String) require(map, STATION_ICAO))
           .reportType((MetarReportType) require(map, REPORT_TYPE))
           .observationTime((ZonedDateTime) require(map, OBSERVATION_TIME))
+          .reportTime((ZonedDateTime) require(map, REPORT_TIME))
           .wind((Wind) require(map, WIND))
           .visibility((Visibility) require(map, VISIBILITY))
           .temperaturePair((TemperaturePair) require(map, TEMPERATURE_PAIR))
@@ -81,6 +83,7 @@ public class MetarParser {
     var stationIcaoRegexParser = new StationIcaoRegexParser();
     var metarReportTypeRegexParser = new MetarReportTypeRegexParser();
     var observationTimeRegexParser = new ObservationTimeRegexParser(yearMonth);
+    var reportTimeRegexParser = new ReportTimeRegexParser(yearMonth);
     var windRegexParser = new WindRegexParser();
     var visibilityRegexParser = new VisibilityRegexParser();
     var temperaturePairRegexParser = new TemperaturePairRegexParser();
@@ -92,6 +95,7 @@ public class MetarParser {
     parser.add(stationIcaoRegexParser);
     parser.add(metarReportTypeRegexParser);
     parser.add(observationTimeRegexParser);
+    parser.add(reportTimeRegexParser);
     parser.add(windRegexParser);
     parser.add(visibilityRegexParser);
     parser.add(temperaturePairRegexParser);
