@@ -71,7 +71,7 @@ public class TestData {
 
     metarQuery = metarDatabase.stream()
       .filter(m -> {
-        ZonedDateTime obs = m.getObservationTime();
+        ZonedDateTime obs = m.getReportTime();
         return !obs.isBefore(startUtc) && !obs.isAfter(endUtc);
       })
       .toList();
@@ -185,6 +185,7 @@ public class TestData {
           .stationIcao(station)
           .reportType(MetarReportType.METAR)
           .observationTime(obs)
+          .reportTime(obs)
           .wind(wind)
           .visibility(visObj)
           .temperaturePair(tp)

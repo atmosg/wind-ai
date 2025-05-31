@@ -26,7 +26,7 @@ public final class ObservationStatisticAggregator {
     Map<YearMonth, Map<Integer, Set<LocalDate>>> hourSet = new HashMap<>();
 
     filtered.forEach(m -> {
-      ZonedDateTime utc = m.getObservationTime();
+      ZonedDateTime utc = m.getReportTime();
       YearMonth ym = YearMonth.from(utc);
       LocalDate day = utc.toLocalDate();
       int hr = utc.getHour();

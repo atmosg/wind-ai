@@ -30,7 +30,7 @@ public class WindRoseInputPort implements WindRoseUsecase {
       .collect(Collectors.toList());
     
     return metarsWithFixedWind.stream().collect(Collectors.groupingBy(m -> 
-      Month.from(m.getObservationTime()),
+      Month.from(m.getReportTime()),
       Collectors.collectingAndThen(
         Collectors.toList(),
         monthlyMetarList -> buildWindRoseForMonth(monthlyMetarList, speedBins, directionBins)

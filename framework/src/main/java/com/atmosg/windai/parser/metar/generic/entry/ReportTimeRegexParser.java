@@ -1,19 +1,15 @@
 package com.atmosg.windai.parser.metar.generic.entry;
 
-import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.regex.Matcher;
 
-import com.atmosg.windai.parser.metar.generic.regex.ObservationTimeRegexes;
 import com.atmosg.windai.parser.shared.ReportRegexParser;
 import com.atmosg.windai.vo.metar.type.MetarField;
 import com.atmosg.windai.vo.metar.type.MetarReportType;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 public class ReportTimeRegexParser extends ReportRegexParser<ZonedDateTime> {
 
