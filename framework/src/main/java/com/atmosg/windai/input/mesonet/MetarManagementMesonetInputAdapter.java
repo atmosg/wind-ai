@@ -7,7 +7,6 @@ import java.time.ZonedDateTime;
 import com.atmosg.windai.parser.metar.generic.factory.MetarParser;
 import com.atmosg.windai.parser.metar.mesonet.IssuedTimeRegexParser;
 import com.atmosg.windai.parser.shared.ReportParser;
-import com.atmosg.windai.ports.input.MetarManagementInputPort;
 import com.atmosg.windai.ports.output.MetarManagementOutputPort;
 import com.atmosg.windai.usecases.MetarManagementUseCase;
 import com.atmosg.windai.vo.metar.Metar;

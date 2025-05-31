@@ -3,4 +3,5 @@
   "java.debug.settings.console": {
     "encoding": "utf8"
   },
+  "java.compile.nullAnalysis.mode": "automatic",
 }

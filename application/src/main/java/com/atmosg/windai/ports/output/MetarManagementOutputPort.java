@@ -10,7 +10,7 @@ public interface MetarManagementOutputPort {
   
   void persistMetar(Metar metar, ZonedDateTime issuedTime);
   
-  Metar retrieveMetar(String icao, ZonedDateTime time);
+  Metar retrieveMetar(String icao, ZonedDateTime reportTime);
 
   List<Metar> retrieveMetars(String icao, MetarRetrievalPeriod period);
 
