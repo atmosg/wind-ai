@@ -5,11 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
-import com.atmosg.windai.exception.GenericPolicyException;
-import com.atmosg.windai.output.parser.metar.entry.StationIcaoRegexParser;
-import com.atmosg.windai.output.parser.shared.ReportParser;
-
-import net.bytebuddy.dynamic.scaffold.FieldLocator.Resolution.Illegal;
+import com.atmosg.windai.parser.metar.generic.entry.StationIcaoRegexParser;
+import com.atmosg.windai.parser.shared.ReportParser;
 
 public class StationTest {
   

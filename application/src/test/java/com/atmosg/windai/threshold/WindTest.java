@@ -30,7 +30,7 @@ public class WindTest extends TestData {
   @When("사용자가 최대풍속 임계치 이하 날의 통계를 생성한다")
   public void 생성_최대풍속_임계치_이하_날의_통계() {
     this.result = thresholdStatisticUseCase.execute(
-      new ThresholdStatisticQuery(period, new ThresholdCondition(
+      new ThresholdStatisticQuery("RKSI", period, new ThresholdCondition(
         MetarField.PEAK_WIND,
         Comparison.GTE,
         25.0,
@@ -48,7 +48,7 @@ public class WindTest extends TestData {
     MockitoAnnotations.openMocks(this);
     loadData(2019, 1);
     this.thresholdStatisticUseCase = new ThresholdStatisticInputPort(metarOutputPort);
-    when(metarOutputPort.retrieveMetars(period))
+    when(metarOutputPort.retrieveMetars("RKSI", period))
       .thenReturn(metarQuery);
   }
   

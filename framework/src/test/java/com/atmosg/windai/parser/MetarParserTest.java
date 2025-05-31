@@ -7,7 +7,7 @@ import java.time.YearMonth;
 import org.junit.Test;
 
 import com.atmosg.windai.TestMetarData;
-import com.atmosg.windai.output.parser.metar.factory.MetarParser;
+import com.atmosg.windai.parser.metar.generic.factory.MetarParser;
 import com.atmosg.windai.vo.metar.Metar;
 
 public class MetarParserTest extends TestMetarData {

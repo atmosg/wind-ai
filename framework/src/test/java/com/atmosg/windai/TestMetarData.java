@@ -16,7 +16,6 @@ import com.atmosg.windai.vo.metar.field.Pressure;
 import com.atmosg.windai.vo.metar.field.Temperature;
 import com.atmosg.windai.vo.metar.field.TemperaturePair;
 import com.atmosg.windai.vo.metar.field.Visibility;
-import com.atmosg.windai.vo.metar.field.Weather;
 import com.atmosg.windai.vo.metar.field.WeatherGroup;
 import com.atmosg.windai.vo.metar.field.Wind;
 import com.atmosg.windai.vo.metar.field.WindDirection;
@@ -24,12 +23,6 @@ import com.atmosg.windai.vo.metar.type.CloudCoverage;
 import com.atmosg.windai.vo.metar.type.CloudType;
 
 import static com.atmosg.windai.vo.metar.type.MetarReportType.*;
-import static com.atmosg.windai.vo.metar.field.CloudGroup.*;
-import static com.atmosg.windai.vo.metar.field.Pressure.*;
-import static com.atmosg.windai.vo.metar.field.TemperaturePair.*;
-import static com.atmosg.windai.vo.metar.field.Visibility.*;
-import static com.atmosg.windai.vo.metar.field.WeatherGroup.*;
-import static com.atmosg.windai.vo.metar.field.Wind.*;
 
 public class TestMetarData {
 

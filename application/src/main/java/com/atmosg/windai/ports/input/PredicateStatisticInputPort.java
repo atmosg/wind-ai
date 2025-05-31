@@ -20,7 +20,7 @@ public class PredicateStatisticInputPort implements PredicateStatisticUseCase {
 
   @Override
   public ObservationStatisticResponse execute(PreciateStatisticQuery query) {
-    List<Metar> metarList = metarOutputPort.retrieveMetars(query.period());
+    List<Metar> metarList = metarOutputPort.retrieveMetars(query.icao(), query.period());
     
     PredicateCondition condition = query.condition();
     Predicate<Metar> predicate = m -> condition.field().test(m, condition.targeList());

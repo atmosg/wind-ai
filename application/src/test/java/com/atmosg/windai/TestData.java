@@ -67,7 +67,7 @@ public class TestData {
       ZoneOffset.UTC);
 
     ZonedDateTime endUtc = startUtc.plusYears(plusYear);
-    this.period = new MetarRetrievalPeriod("RKSI", startUtc, endUtc);
+    this.period = new MetarRetrievalPeriod(startUtc, endUtc);
 
     metarQuery = metarDatabase.stream()
       .filter(m -> {

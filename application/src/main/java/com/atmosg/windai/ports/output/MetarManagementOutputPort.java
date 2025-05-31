@@ -8,10 +8,11 @@ import com.atmosg.windai.vo.metar.Metar;
 
 public interface MetarManagementOutputPort {
   
+  void persistMetar(Metar metar, ZonedDateTime issuedTime);
+  
   Metar retrieveMetar(String icao, ZonedDateTime time);
 
-  List<Metar> retrieveMetars(MetarRetrievalPeriod period);
+  List<Metar> retrieveMetars(String icao, MetarRetrievalPeriod period);
 
-  void persistMetarRawText(String icao, ZonedDateTime time, String rawText);
 
 }

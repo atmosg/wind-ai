@@ -22,8 +22,8 @@ public class WindRoseInputPort implements WindRoseUsecase {
   private MetarManagementOutputPort metarOutputPort;
 
   @Override
-  public Map<Month, WindRose> generateMonthlyWindRose(MetarRetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
-    List<Metar> metarList = metarOutputPort.retrieveMetars(period);
+  public Map<Month, WindRose> generateMonthlyWindRose(String icao, MetarRetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins) {
+    List<Metar> metarList = metarOutputPort.retrieveMetars(icao, period);
 
     List<Metar> metarsWithFixedWind = metarList.stream()
       .filter(m -> !m.getWind().getDirection().isVariable())

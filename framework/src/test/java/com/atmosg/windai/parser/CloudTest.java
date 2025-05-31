@@ -9,8 +9,8 @@ import java.util.List;
 import org.junit.Test;
 
 import com.atmosg.windai.exception.GenericSpecificationExeception;
-import com.atmosg.windai.output.parser.metar.entry.CloudGroupRegexParser;
-import com.atmosg.windai.output.parser.shared.ReportParser;
+import com.atmosg.windai.parser.metar.generic.entry.CloudGroupRegexParser;
+import com.atmosg.windai.parser.shared.ReportParser;
 import com.atmosg.windai.vo.metar.field.Cloud;
 import com.atmosg.windai.vo.metar.field.CloudGroup;
 import com.atmosg.windai.vo.metar.type.CloudCoverage;

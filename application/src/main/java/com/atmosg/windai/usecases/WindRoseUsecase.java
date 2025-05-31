@@ -11,6 +11,6 @@ import com.atmosg.windai.dto.windrose.WindRose;
 
 public interface WindRoseUsecase {
   
-  public Map<Month, WindRose> generateMonthlyWindRose(MetarRetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins);
+  public Map<Month, WindRose> generateMonthlyWindRose(String icao, MetarRetrievalPeriod period, List<SpeedBin> speedBins, List<DirectionBin> directionBins);
 
 }

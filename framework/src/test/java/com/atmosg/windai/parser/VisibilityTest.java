@@ -6,9 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Test;
 
 import com.atmosg.windai.TestMetarData;
-import com.atmosg.windai.exception.GenericPolicyException;
-import com.atmosg.windai.output.parser.metar.entry.VisibilityRegexParser;
-import com.atmosg.windai.output.parser.shared.ReportParser;
+import com.atmosg.windai.parser.metar.generic.entry.VisibilityRegexParser;
+import com.atmosg.windai.parser.shared.ReportParser;
 import com.atmosg.windai.unit.LengthUnit;
 import com.atmosg.windai.vo.metar.field.Visibility;
 

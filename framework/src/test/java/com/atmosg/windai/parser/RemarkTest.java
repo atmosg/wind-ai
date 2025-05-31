@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 
-import com.atmosg.windai.output.parser.metar.entry.RemarkRegexParser;
-import com.atmosg.windai.output.parser.shared.ReportParser;
+import com.atmosg.windai.parser.metar.generic.entry.RemarkRegexParser;
+import com.atmosg.windai.parser.shared.ReportParser;
 
 public class RemarkTest {
 

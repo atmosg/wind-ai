@@ -9,8 +9,8 @@ import java.time.ZonedDateTime;
 
 import org.junit.Test;
 
-import com.atmosg.windai.output.parser.metar.entry.ObservationTimeRegexParser;
-import com.atmosg.windai.output.parser.shared.ReportParser;
+import com.atmosg.windai.parser.metar.generic.entry.ObservationTimeRegexParser;
+import com.atmosg.windai.parser.shared.ReportParser;
 
 public class ObservataionTimeTest {
 

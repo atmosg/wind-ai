@@ -7,17 +7,17 @@ import java.time.YearMonth;
 
 import org.junit.Test;
 
-import com.atmosg.windai.output.parser.metar.composite.CompositeRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.AltimeterRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.CloudGroupRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.MetarReportTypeRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.ObservationTimeRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.RemarkRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.StationIcaoRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.TemperaturePairRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.VisibilityRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.WeatherGroupRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.WindRegexParser;
+import com.atmosg.windai.parser.metar.generic.composite.CompositeRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.AltimeterRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.CloudGroupRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.MetarReportTypeRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.ObservationTimeRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.RemarkRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.StationIcaoRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.TemperaturePairRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.VisibilityRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.WeatherGroupRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.WindRegexParser;
 
 public class CompositeTest {
 

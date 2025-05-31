@@ -37,7 +37,7 @@ public class WindRoseTest extends TestData {
 
   @When("사용자가 월별 바람장미를 생성한다")
   public void 생성_월별_바람장미() {
-    this.result = windRoseUsecase.generateMonthlyWindRose(period, speedBins, directionBins);
+    this.result = windRoseUsecase.generateMonthlyWindRose("RKSI", period, speedBins, directionBins);
   }
 
   @Then("모든 방향·속도 조합의 비율 합은 1200% 이어야 한다")
@@ -63,7 +63,7 @@ public class WindRoseTest extends TestData {
     loadData(2019, 1);
     
     this.windRoseUsecase = new WindRoseInputPort(metarOutputPort);
-    when(metarOutputPort.retrieveMetars(period))
+    when(metarOutputPort.retrieveMetars("RKSI", period))
       .thenReturn(metarQuery);
   }
 

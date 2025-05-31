@@ -1,6 +1,5 @@
 package com.atmosg.windai.dto.windrose;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 

@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 
-import com.atmosg.windai.output.parser.metar.entry.AltimeterRegexParser;
-import com.atmosg.windai.output.parser.shared.ReportParser;
+import com.atmosg.windai.parser.metar.generic.entry.AltimeterRegexParser;
+import com.atmosg.windai.parser.shared.ReportParser;
 import com.atmosg.windai.unit.PressureUnit;
 import com.atmosg.windai.vo.metar.field.Pressure;
 

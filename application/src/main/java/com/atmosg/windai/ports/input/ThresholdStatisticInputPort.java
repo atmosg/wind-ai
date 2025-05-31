@@ -20,7 +20,7 @@ public class ThresholdStatisticInputPort implements ThresholdStatisticUseCase {
 
   @Override
   public ObservationStatisticResponse execute(ThresholdStatisticQuery query) {
-    List<Metar> metarList = metarOutputPort.retrieveMetars(query.period());
+    List<Metar> metarList = metarOutputPort.retrieveMetars(query.icao(), query.period());
     
     ThresholdCondition condition = query.condition();
     Predicate<Metar> predicate = m -> {

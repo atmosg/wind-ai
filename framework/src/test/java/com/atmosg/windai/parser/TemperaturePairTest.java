@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
-import com.atmosg.windai.output.parser.metar.entry.TemperaturePairRegexParser;
-import com.atmosg.windai.output.parser.shared.ReportParser;
+import com.atmosg.windai.parser.metar.generic.entry.TemperaturePairRegexParser;
+import com.atmosg.windai.parser.shared.ReportParser;
 import com.atmosg.windai.unit.TemperatureUnit;
 import com.atmosg.windai.vo.metar.field.Temperature;
 import com.atmosg.windai.vo.metar.field.TemperaturePair;

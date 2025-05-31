@@ -8,9 +8,9 @@ import java.util.List;
 import org.junit.Test;
 
 import com.atmosg.windai.TestMetarData;
-import com.atmosg.windai.output.parser.metar.entry.WeatherGroupRegexParser;
-import com.atmosg.windai.output.parser.metar.entry.WeatherRegexParser;
-import com.atmosg.windai.output.parser.shared.ReportParser;
+import com.atmosg.windai.parser.metar.generic.entry.WeatherGroupRegexParser;
+import com.atmosg.windai.parser.metar.generic.entry.WeatherRegexParser;
+import com.atmosg.windai.parser.shared.ReportParser;
 import com.atmosg.windai.vo.metar.field.Weather;
 import com.atmosg.windai.vo.metar.field.WeatherGroup;
 import com.atmosg.windai.vo.metar.type.WeatherInensity;
